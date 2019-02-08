@@ -16,14 +16,23 @@ WIDTH = window.innerWidth;
 
 
 var screens = new Image(WIDTH,HEIGHT);
-  screens.src = "img/screens.png";
+  screens.src = "screens.png";
   var currentScreen = "menu";
+var darknessmu = new Audio("darkness music.wav");
+  darknessmu.loop = true;
 
 setInterval(update,50);
   function update(){
     ctx.clearRect(0,0,WIDTH,HEIGHT);
 
 screenUpdate();
+    musicUpdate();
+
+  }
+  function musicUpdate(){
+if(currentScreen === "menu"){
+     darknessmu.play();
+     }
 
   }
   function screenUpdate(){
@@ -61,8 +70,18 @@ ctx.drawImage(screens,2166,722,1280,722,0,0,WIDTH,HEIGHT);
 
       ctxt.fillText("Start new game",25,200);
       ctxt.fillText("Quit game",25,250);
+document.addEventListener("click", startNewGame);
+
         }
 
+
+  }
+  function startNewGame(e){
+if(e.clientX > 30 && e.clientX < 215 && e.clientY < 250 && e.clientY > 185 ){
+
+    alert("painoit: x: " + e.clientX + " y: " + e.clientY);
+
+}
 
   }
 
